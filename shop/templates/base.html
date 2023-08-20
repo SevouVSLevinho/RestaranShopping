@@ -1,0 +1,242 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="{% block metadescription %}{% endblock %}">
+	<link rel="icon" href="{% static 'assets/images/slider/logo.png'%}">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fontawesome-all.min.css' %}">
+	<title>DELI KC - Restourant</title>
+	<!-- Product Detail Link -->
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/bootstrap/css/bootstrap.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/fonts/font-awesome-4.7.0/css/font-awesome.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/fonts/iconic/css/material-design-iconic-font.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/fonts/linearicons-v1.0.0/icon-font.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/animate/animate.css'%}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/css-hamburgers/hamburgers.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/animsition/css/animsition.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/select2/select2.min.css'%}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/daterangepicker/daterangepicker.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/slick/slick.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/MagnificPopup/magnific-popup.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/perfect-scrollbar/perfect-scrollbar.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/css/util.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/css/main.css'%}">
+<!--===============================================================================================-->
+
+	<!-- Vendor CSS Files -->
+	<link href="{% static 'assets/assets/vendor/aos/aos.css'%}" rel="stylesheet">
+	<link href="{% static 'assets/assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+	<link href="{% static 'assets/assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+	<link href="{% static 'assets/assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+	<link href="{% static 'assets/assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+
+	<!-- Template Main CSS File -->
+	<link href="{% static 'assets/assets/css/style.css'%}" rel="stylesheet">
+
+	<style>
+		#loader-wrapper {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 1000;
+		}
+		#loader {
+			display: block;
+			position: relative;
+			left: 50%;
+			top: 50%;
+			width: 150px;
+			height: 150px;
+			margin: -75px 0 0 -75px;
+			border-radius: 50%;
+			border: 3px solid transparent;
+			border-top-color: #3498db;
+
+			-webkit-animation: spin 2s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+			animation: spin 2s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+
+			z-index: 1001;
+		}
+		#loader:before {
+			content: "";
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			right: 5px;
+			bottom: 5px;
+			border-radius: 50%;
+			border: 3px solid transparent;
+			border-top-color: #e74c3c;
+
+			-webkit-animation: spin 3s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+			animation: spin 3s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+		}
+
+		#loader:after {
+			content: "";
+			position: absolute;
+			top: 15px;
+			left: 15px;
+			right: 15px;
+			bottom: 15px;
+			border-radius: 50%;
+			border: 3px solid transparent;
+			border-top-color: #f9c922;
+
+			-webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+			animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+		}
+
+		@-webkit-keyframes spin {
+			0%   { 
+				-webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+				-ms-transform: rotate(0deg);  /* IE 9 */
+				transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+			}
+			100% {
+				-webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+				-ms-transform: rotate(360deg);  /* IE 9 */
+				transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+			}
+		}
+		@keyframes spin {
+			0%   { 
+				-webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+				-ms-transform: rotate(0deg);  /* IE 9 */
+				transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+			}
+			100% {
+				-webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+				-ms-transform: rotate(360deg);  /* IE 9 */
+				transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+			}
+		}
+
+		#loader-wrapper .loader-section {
+			position: fixed;
+			top: 0;
+			width: 51%;
+			height: 100%;
+			background: #222222;
+			z-index: 1000;
+			-webkit-transform: translateX(0);  /* Chrome, Opera 15+, Safari 3.1+ */
+			-ms-transform: translateX(0);  /* IE 9 */
+			transform: translateX(0);  /* Firefox 16+, IE 10+, Opera */
+		}
+
+		#loader-wrapper .loader-section.section-left {
+			left: 0;
+		}
+
+		#loader-wrapper .loader-section.section-right {
+			right: 0;
+		}
+
+		/* Loaded */
+		.loaded #loader-wrapper .loader-section.section-left {
+			-webkit-transform: translateX(-100%);  /* Chrome, Opera 15+, Safari 3.1+ */
+				-ms-transform: translateX(-100%);  /* IE 9 */
+					transform: translateX(-100%);  /* Firefox 16+, IE 10+, Opera */
+
+			-webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  
+					transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+		}
+
+		.loaded #loader-wrapper .loader-section.section-right {
+			-webkit-transform: translateX(100%);  /* Chrome, Opera 15+, Safari 3.1+ */
+				-ms-transform: translateX(100%);  /* IE 9 */
+					transform: translateX(100%);  /* Firefox 16+, IE 10+, Opera */
+
+		-webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  
+			transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+		}
+
+		.loaded #loader {
+			opacity: 0;
+			-webkit-transition: all 0.3s ease-out;  
+					transition: all 0.3s ease-out;
+		}
+		.loaded #loader-wrapper {
+			visibility: hidden;
+
+			-webkit-transform: translateY(-100%);  /* Chrome, Opera 15+, Safari 3.1+ */
+				-ms-transform: translateY(-100%);  /* IE 9 */
+					transform: translateY(-100%);  /* Firefox 16+, IE 10+, Opera */
+
+			-webkit-transition: all 0.3s 1s ease-out;  
+					transition: all 0.3s 1s ease-out;
+		}
+		/* end Preloader */
+	</style>
+</head>
+<body>
+	<!-- Preloader -->
+    <div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+		<div class="loader-section section-right"></div>
+	</div>
+	<!-- End Preloader -->
+	
+	{% include 'navbar.html' %}
+	{% block content %}
+	{% endblock %}
+	
+	{% include 'footer.html' %}
+	<script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+	<!-- ============== Product Detail code ================== -->
+
+<!--===============================================================================================-->
+	<script src="{% static 'cozastore/vendor/animsition/js/animsition.min.js '%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'cozastore/vendor/select2/select2.min.js '%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'cozastore/vendor/daterangepicker/moment.min.js '%}"></script>
+	<script src="{% static 'cozastore/vendor/daterangepicker/daterangepicker.js '%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'cozastore/vendor/slick/slick.min.js '%}"></script>
+	<script src="{% static 'cozastore/js/slick-custom.js '%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'cozastore/vendor/parallax100/parallax100.js '%}"></script>
+	<script src="{% static 'cozastore/vendor/MagnificPopup/jquery.magnific-popup.min.js '%}"></script>
+	<!--===============================================================================================-->
+	<script src="{% static 'cozastore/vendor/isotope/isotope.pkgd.min.js '%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'cozastore/vendor/sweetalert/sweetalert.min.js '%}"></script>
+	<script src="{% static 'cozastore/vendor/perfect-scrollbar/perfect-scrollbar.min.js '%}"></script>
+	<script src="{% static 'cozastore/js/main.js '%}"></script>
+
+	<!-- Vendor JS Files -->
+	<script src="{% static 'assets/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+	<script src="{% static 'assets/assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+	<script src="{% static 'assets/assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+	<script src="{% static 'assets/assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+	<script src="{% static 'assets/assets/vendor/php-email-form/validate.js'%}"></script>
+
+	<script type="text/javascript" src="{% static 'js/jquery-1.11.2.min.js '%}"></script>      <!-- jQuery -->
+   	<script type="text/javascript" src="{% static 'js/templatemo-script.js '%}"></script>      <!-- Templatemo Script -->
+</body>
+</html>

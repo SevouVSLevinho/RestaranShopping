@@ -1,0 +1,544 @@
+{% extends "base.html" %}
+{% load static %}
+{% block metadescription %}
+	{{ product.description|truncatewords:155 }}
+{% endblock %}
+{% block title %}
+	{{ product.name }} - Perfect Restarount Shop
+{% endblock %}
+{% block content %}
+<html>
+<head>
+    <title>DELI KC - Restourant</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- ================================================================ -->
+	<link rel="icon" href="{% static './assets/images/slider/pngwing.com.png '%}">
+    <!-- ================================================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- ================================================================ -->
+    <link rel="stylesheet" href="{% static 'assets/css/open-iconic-bootstrap.min.css '%}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css '%}">
+    <!-- ================================================================ -->
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css '%}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css '%}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css '%}">
+    <!-- ================================================================ -->
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css '%}">
+    <!-- ================================================================ -->
+    <link rel="stylesheet" href="{% static 'assets/css/ionicons.min.css '%}">
+    <!-- ================================================================ -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-datepicker.css '%}">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.timepicker.css '%}">
+    <!-- ================================================================ -->    
+    <link rel="stylesheet" href="{% static 'css/flaticon.css '%}">
+    <link rel="stylesheet" href="{% static 'assets/css/icomoon.css '%}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css '%}">
+
+	<!-- ========================== Aroma ========================== --> 
+
+	<link rel="stylesheet" href="{% static 'Aroma/vendors/bootstrap/bootstrap.min.css' %}">
+  	<link rel="stylesheet" href="{% static 'Aroma/vendors/fontawesome/css/all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'Aroma/vendors/themify-icons/themify-icons.css' %}">
+	<link rel="stylesheet" href="{% static 'Aroma/vendors/linericon/style.css' %}">
+  	<link rel="stylesheet" href="{% static 'Aroma/vendors/nice-select/nice-select.css' %}">
+  	<link rel="stylesheet" href="{% static 'Aroma/vendors/owl-carousel/owl.theme.default.min.css' %}">
+  	<link rel="stylesheet" href="{% static 'Aroma/vendors/owl-carousel/owl.carousel.min.css' %}">
+
+	<link rel="stylesheet" href="{% static 'Aroma/css/style.css' %}">
+    <!-- ================================================================ -->
+	<!-- Product Detail Link -->
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/bootstrap/css/bootstrap.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/fonts/font-awesome-4.7.0/css/font-awesome.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/fonts/iconic/css/material-design-iconic-font.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/fonts/linearicons-v1.0.0/icon-font.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/animate/animate.css'%}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/css-hamburgers/hamburgers.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/animsition/css/animsition.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/select2/select2.min.css'%}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/daterangepicker/daterangepicker.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/slick/slick.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/MagnificPopup/magnific-popup.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/vendor/perfect-scrollbar/perfect-scrollbar.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/css/util.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/css/main.css'%}">
+<!--===============================================================================================-->
+	<style>
+		
+		.rating {
+			display: flex;
+			justify-content: left;
+			grid-gap: .5rem;
+			font-size: 2rem;
+			color: yellow;			
+		}
+
+		.rating .star {
+			cursor: pointer;
+		}
+
+		.rating .star.active {
+			opacity: 0;
+			animation: animate .5s calc(var(--1) * .1s) ease-in-out forwards;
+		}
+
+		@keyframes animate {
+
+			0% {
+				opacity: 0;
+				transform: scale(1);
+			}
+
+			50% {
+				opacity: 1;
+				transform: scale(1.2);
+			}
+
+			100% {
+				opacity: 1;
+				transform: scale(1);
+			}
+
+		}
+
+		.rating .star:hover {
+			transform: scale(1.1);
+		}
+	</style>
+  </head>
+<body>
+	<!-- Product Detail -->
+	<section style="margin-top: 8.4em; background-color: #000; margin-bottom: -5em;" class="sec-product-detail bg0 p-t-65 p-b-60">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-lg-7 p-b-30">
+					<div class="p-l-25 p-r-30 p-lr-0-lg">
+						<div class="wrap-slick3 flex-sb flex-w">
+							<div class="wrap-slick3-dots"></div>
+							<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+
+							<div class="slick3 gallery-lb">
+								<div class="item-slick3" data-thumb="{{ product.image.url }}">
+									<div class="wrap-pic-w pos-relative">
+										<img src="{{ product.image.url }}" alt="{{product.name}}">
+
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ product.image.url }}">
+											<i class="fa fa-expand"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+					
+				<div class="col-md-6 col-lg-5 p-b-30">
+					<div class="p-r-50 p-t-5 p-lr-0-lg">
+						<h4 style="color: #fff;" class="mtext-105 cl2 js-name-detail p-b-14">
+							{{product.name}}
+						</h4>
+
+						<span style="color: #fff;" class="mtext-106 cl2">
+							{{product.price}}{{ product.unit }}
+						</span><br>
+
+						{% if product.get_rating > 0 %}
+						<span style="color: #fff;" class="mtext-106 cl2">
+							Rating: {{ product.get_rating }} / 5
+						</span><br>
+						{% endif %}
+
+						<p style="color: #fff;" class="my_title">Product Description</p>
+
+						<p style="color: #fff;" class="stext-102 cl3 p-t-23">
+							{{product.description}}
+						</p>
+						<div class="rating">
+							<input type="number" name="rating" hidden>
+							<i class="bi bi-star star" style="--1: 0"></i>
+							<i class="bi bi-star star" style="--1: 1"></i>
+							<i class="bi bi-star star" style="--1: 2"></i>
+							<i class="bi bi-star star" style="--1: 3"></i>
+							<i class="bi bi-star star" style="--1: 4"></i>
+						</div>
+						<div style="margin-top: 12em; margin-left: 10em;" class="flex-w flex-r-m p-b-10">
+							<div class="size-204 flex-w flex-m respon6-next">
+								{% if product.stock <= 0%}
+								{% else %}
+									<a style="background-color: #ffa45c;" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" href="{% url 'cart:add_cart' product.id %}">Add To Cart</a>
+								{% endif %}
+							</div>
+						</div>	
+					</div>
+
+						<!--  -->
+						<div style="margin-left: 11em;" class="flex-w flex-m p-l-100 p-t-40 respon7">
+							<div class="flex-m bor9 p-r-10 m-r-11">
+								<a style="color: #fff;" href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
+									<i class="zmdi zmdi-favorite"></i>
+								</a>
+							</div>
+
+							<a style="color: #fff;" href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+								<i class="fa fa-facebook"></i>
+							</a>
+
+							<a style="color: #fff;" href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
+								<i class="fa fa-twitter"></i>
+							</a>
+
+							<a style="color: #fff;" href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
+								<i class="fa fa-google-plus"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+    	</div>
+    </section>
+
+	<!--================Product Description Area =================-->
+	<section style="background-color: #000;" class="product_description_area">
+		<div class="container">
+			<ul style="background-color: #000 !important;" class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
+					 aria-selected="false">Reviews</a>
+				</li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+					<p>Beryl Cook is one of Britain’s most talented and amusing artists .Beryl’s pictures feature women of all shapes
+						and sizes enjoying themselves .Born between the two world wars, Beryl Cook eventually left Kendrick School in
+						Reading at the age of 15, where she went to secretarial school and then into an insurance office. After moving to
+						London and then Hampton, she eventually married her next door neighbour from Reading, John Cook. He was an
+						officer in the Merchant Navy and after he left the sea in 1956, they bought a pub for a year before John took a
+						job in Southern Rhodesia with a motor company. Beryl bought their young son a box of watercolours, and when
+						showing him how to use it, she decided that she herself quite enjoyed painting. John subsequently bought her a
+						child’s painting set for her birthday and it was with this that she produced her first significant work, a
+						half-length portrait of a dark-skinned lady with a vacant expression and large drooping breasts. It was aptly
+						named ‘Hangover’ by Beryl’s husband and</p>
+					<p>It is often frustrating to attempt to plan meals that are designed for one. Despite this fact, we are seeing
+						more and more recipe books and Internet websites that are dedicated to the act of cooking for one. Divorce and
+						the death of spouses or grown children leaving for college are all reasons that someone accustomed to cooking for
+						more than one would suddenly need to learn how to adjust all the cooking practices utilized before into a
+						streamlined plan of cooking that is more efficient for one person creating less</p>
+				</div>
+				<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+					<div class="table-responsive">
+						<table class="table">
+							<tbody>
+								<tr>
+									<td>
+										<h5>Width</h5>
+									</td>
+									<td>
+										<h5>128mm</h5>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h5>Height</h5>
+									</td>
+									<td>
+										<h5>508mm</h5>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h5>Depth</h5>
+									</td>
+									<td>
+										<h5>85mm</h5>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h5>Weight</h5>
+									</td>
+									<td>
+										<h5>52gm</h5>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h5>Quality checking</h5>
+									</td>
+									<td>
+										<h5>yes</h5>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h5>Freshness Duration</h5>
+									</td>
+									<td>
+										<h5>03days</h5>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h5>When packeting</h5>
+									</td>
+									<td>
+										<h5>Without touch of hand</h5>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h5>Each Box contains</h5>
+									</td>
+									<td>
+										<h5>60pcs</h5>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="comment_list">
+								<div class="review_item">
+									<div class="media">
+										<div class="d-flex">
+											<img src="{% static 'Aroma/img/product/review-1.png' %}" alt="">
+										</div>
+										<div class="media-body">
+											<h4>Blake Ruiz</h4>
+											<h5>12th Feb, 2018 at 05:56 pm</h5>
+											<a class="reply_btn" href="#">Reply</a>
+										</div>
+									</div>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+										commodo</p>
+								</div>
+								<div class="review_item reply">
+									<div class="media">
+										<div class="d-flex">
+											<img src="{% static 'Aroma/img/product/review-2.png' %}" alt="">
+										</div>
+										<div class="media-body">
+											<h4>Blake Ruiz</h4>
+											<h5>12th Feb, 2018 at 05:56 pm</h5>
+											<a class="reply_btn" href="#">Reply</a>
+										</div>
+									</div>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+										commodo</p>
+								</div>
+								<div class="review_item">
+									<div class="media">
+										<div class="d-flex">
+											<img src="{% static 'Aroma/img/product/review-3.png' %}" alt="">
+										</div>
+										<div class="media-body">
+											<h4>Blake Ruiz</h4>
+											<h5>12th Feb, 2018 at 05:56 pm</h5>
+											<a class="reply_btn" href="#">Reply</a>
+										</div>
+									</div>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+										commodo</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="review_box">
+								<h4 style="color: #fff;">Post a comment</h4>
+								<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+									<div class="col-md-12">
+										<div class="form-group">
+											<input style="background-color: transparent !important; border-bottom: 2px solid #fff; border-radius: 0;" type="text" class="form-control" id="name" name="name" placeholder="Your Full name">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input style="background-color: transparent !important; border-bottom: 2px solid #fff; border-radius: 0;" type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input style="background-color: transparent !important; border-bottom: 2px solid #fff; border-radius: 0;" type="text" class="form-control" id="number" name="number" placeholder="Phone Number">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<textarea style="background-color: transparent !important; border-bottom: 2px solid #fff; border-radius: 0;" class="form-control" name="message" id="message" rows="1" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<div class="col-md-12 text-right">
+										<button  type="submit" value="submit" class="button button--active button-review">Submit Now</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="row total_rate">
+								<div class="col-6">
+									<div class="box_total">
+										<h5>Overall</h5>
+										<h4>4.0</h4>
+										<h6>(03 Reviews)</h6>
+									</div>
+								</div>
+								<div class="col-6">
+									<div style="margin-left: 35em; width: 100%;" class="rating_list">
+										{% if request.user.is_authenticated %}
+											<form method="post" action=".">
+												{% csrf_token %}
+
+												<div class="rating">
+													<label>Rating: </label>
+													<select style="background-color: transparent !important; color: #fff; border: none !important;" name="rating">
+														<option	style="color: #000; border: none !important;" value="1">1 Star</option>
+														<option	style="color: #000; border: none !important;" value="2">2 Star</option>
+														<option	style="color: #000; border: none !important;" value="3" selected>3 Star</option>
+														<option	style="color: #000; border: none !important;" value="4">4 Star</option>
+														<option	style="color: #000; border: none !important;" value="5">5 Star</option>
+													</select>
+												</div>
+
+												<div style="margin-top: 2em;">
+													<h4 style="color: #fff; margin-bottom: 1em;">Add a Review</h4>
+												<div class="form-group">
+													<textarea style="background-color: transparent !important; border-bottom: 2px solid #fff; color: #fff !important;" class="form-control different-control w-100" name="content" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
+												</div>
+												<div class="form-group text-center text-md-right mt-3">
+													<button type="submit" class="button button--active button-review">Submit Now</button>
+												</div>
+												</div>
+											</form>
+										{% endif %}
+									</div>
+								</div>
+								<div style="margin-top: -10em;" class="review_list">
+									{% for review in product.reviews.all %}
+										<div class="review_item">
+											<div class="media">
+												<div class="d-flex">
+													<img src="{% static 'Aroma/img/product/review-3.png' %}" alt="">
+												</div>
+												<div class="media-body">
+													<h2 style="color: #fff;">{{ review.name }}</h2>
+													<h4 style="color: #25d; font-size: 20px;">{{ review.rating }} / 5</h4>
+													<p>{{ review.created_at | date:"Y-m-d" }}</p>
+												</div>
+											</div>
+											<p>{{ review.content }}</p>
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Product Description Area =================-->
+
+	<script>
+		const allStar = document.querySelectorAll(".rating .star")
+	
+		allStar.forEach((item, idx) => {
+			item.addEventListener('click', function () {
+				let click = 0
+	
+				allStar.forEach(i => {
+					i.classList.replace('bi-star-fill', 'bi-star')
+					i.classList.remove('active')
+				})
+				for(let i=0; i < allStar.length; i++) {
+					if (i <= idx) {
+						allStar[i].classList.replace('bi-star', 'bi-star-fill')
+						allStar[i].classList.add('active')
+					} else {
+						allStar[i+1].style.setProperty('--1', click)
+						click++
+					}
+	
+				}
+			})
+		})
+	  </script>
+	
+  <script src="{% static 'assets/js/jquery.min.js '%}"></script>
+  <script src="{% static 'assets/js/jquery-migrate-3.0.1.min.js '%}"></script>
+  <script src="{% static 'assets/js/popper.min.js '%}"></script>
+  <script src="{% static 'assets/js/bootstrap.min.js '%}"></script>
+  <script src="{% static 'assets/js/jquery.easing.1.3.js '%}"></script>
+  <script src="{% static 'assets/js/jquery.waypoints.min.js '%}"></script>
+  <script src="{% static 'assets/js/jquery.stellar.min.js '%}"></script>
+  <script src="{% static 'assets/js/owl.carousel.min.js '%}"></script>
+  <script src="{% static 'assets/js/jquery.magnific-popup.min.js '%}"></script>
+  <script src="{% static 'assets/js/aos.js '%}"></script>
+  <script src="{% static 'assets/js/jquery.animateNumber.min.js '%}"></script>
+  <script src="{% static 'assets/js/bootstrap-datepicker.js '%}"></script>
+  <script src="{% static 'assets/js/scrollax.min.js '%}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'assets/js/google-map.js '%}"></script>
+  <script src="{% static 'assets/js/main.js '%}"></script>
+
+  <!-- ============== Product Detail code ================== -->
+
+<!--===============================================================================================-->	
+	<script src="{% static 'cozastore/vendor/jquery/jquery-3.2.1.min.js '%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'cozastore/vendor/animsition/js/animsition.min.js '%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'cozastore/vendor/bootstrap/js/popper.js '%}"></script>
+	<script src="{% static 'cozastore/vendor/bootstrap/js/bootstrap.min.js '%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'cozastore/vendor/select2/select2.min.js '%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'cozastore/vendor/daterangepicker/moment.min.js '%}"></script>
+	<script src="{% static 'cozastore/vendor/daterangepicker/daterangepicker.js '%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'cozastore/vendor/slick/slick.min.js '%}"></script>
+	<script src="{% static 'cozastore/js/slick-custom.js '%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'cozastore/vendor/parallax100/parallax100.js '%}"></script>
+	<script src="{% static 'cozastore/vendor/MagnificPopup/jquery.magnific-popup.min.js '%}"></script>
+	<!--===============================================================================================-->
+	<script src="{% static 'cozastore/vendor/isotope/isotope.pkgd.min.js '%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'cozastore/vendor/sweetalert/sweetalert.min.js '%}"></script>
+	<script src="{% static 'cozastore/vendor/perfect-scrollbar/perfect-scrollbar.min.js '%}"></script>
+	<script src="{% static 'cozastore/js/main.js '%}"></script>
+
+	<!-- ====================== Aroma JS ======================== -->
+	<script src="{% static 'Aroma/vendors/jquery/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'Aroma/vendors/bootstrap/bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'Aroma/vendors/skrollr.min.js' %}"></script>
+	<script src="{% static 'Aroma/vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'Aroma/vendors/nice-select/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'Aroma/vendors/jquery.ajaxchimp.min.js' %}"></script>
+	<script src="{% static 'Aroma/vendors/mail-script.js' %}"></script>
+	<script src="{% static 'Aroma/js/main.js' %}"></script>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+{% block metadescription %}
+	Sign in and enjoy the variety of stunning and comfy cushions.
+{% endblock %}
+{% block title %}
+	Login - Perfect Restarount Shop
+{% endblock %}
+{% block content %}
+<html>
+	<head>
+		<style>
+			body {
+				background-image: url(https://img.freepik.com/free-photo/digital-painting-mountain-with-colorful-tree-foreground_1340-25699.jpg?t=st=1691847162~exp=1691850762~hmac=1663e7b8af0d8b39004d00ea4c08f0ee1f4935c8d4ac7fdd370b086edf65a804&w=740);
+				background-size: cover;
+				background-repeat: no-repeat;
+			}
+
+			body::before {
+				content: "";
+				background: rgba(0, 0, 0, 0.6);
+				position: absolute;
+				bottom: -6em;
+				top: 0;
+				left: 0;
+				right: 0;
+			}
+
+			input{
+				border-bottom: 1px solid #cda45e;
+				background-color: transparent !important;
+			}
+
+			.bg {
+				margin-top: 7.5em;
+				backdrop-filter: blur(7px);
+				width: 100%;
+				height: 70vh;
+				padding: 20px 20px;
+			}
+		</style>
+	</head>
+<body>
+	<div class="container">
+		<div class="bg">
+			<br>
+			<h1 style="color: #fff; font-family: 'Poppins', sans-serif;" class=" text-center">Login or Create a New Account</h1>
+			<br>
+			<div class="row">
+				<div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center my_custom_div">
+					<br>
+					<h2 style="color: #fff; font-family: 'Poppins', sans-serif;" class="my_title">New Customer?</h2>
+					<br>
+					<p style="color: #fff; font-family: 'Poppins', sans-serif;">When you create an account with us, you can see your orders history.</p>
+					<br>
+					<a style="background-color: transparent !important; border: 1px solid #8f8f8f;" href="{% url 'signup' %}" class="btn btn-secondary">Create New Account</a>
+				</div>
+				<div class="col-12 col-sm-12 col-md-12 col-lg-6 bg">
+					<div style="margin-top: -9em;">
+						<br>
+						<h2 style="color: #fff; font-family: 'Poppins', sans-serif;" class="my_title">Registered Customers Only</h2>
+						<form method="post">
+							{% csrf_token %}
+							<p style="background-color: transparent !important;">{{ form.as_p }}</p>
+							<button type="submit" style="margin-top: 1em; background-color: transparent !important; border: 1px solid #8f8f8f;" class="btn btn-secondary">Login</button><br>
+							<button style="margin-top: 1em; background-color: transparent !important; border: 1px solid #8f8f8f;"  class="btn btn-secondary">
+								<a style="color: #fff;" href="{% provider_login_url 'google'%}?next=/">
+									<img style="width: 12%; height: 3vh; margin-right: 1em;" src="{% static 'img/google.png' %}" alt="">
+									Login with Google
+								</a>
+							</button>
+						</form>
+						<br>
+					</div>
+					
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>
+	<br>	
+</body>
+</html>
+{% endblock %}

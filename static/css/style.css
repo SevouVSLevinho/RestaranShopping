@@ -1,0 +1,15 @@
+
+#img-custom-circle-actor {
+  position: absolute;
+  max-width: 15%;
+  max-height: 30%;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: white;
+  border-width: 5px;
+  z-index: 1;
+}
+
+.info {
+  margin-top: 15%;
+}

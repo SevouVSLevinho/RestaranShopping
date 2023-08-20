@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+	Thanks - Perfect Restarount Store
+{% endblock %}
+{% block content %}
+	<div style="margin-top: 10em;">
+		<div class="text-center">
+			<img style="width: 10%; height: 20vh;" src="https://gifdb.com/images/high/green-circle-ok-check-mark-6uvrba3bd0fi8ue9.gif" alt="">
+			<br>
+			<br>
+			<h1 class="text-center my_title">
+				Thanks for placing your order
+			</h1>
+			<br>
+			<br>
+			<p>Your order number is: <b>{{ customer_order.id }}</b></p>
+			<br>
+			<p>
+				We have received your order and will begin processing right away. For your records an email confirmation has been sent to you. It contains details of the items you purchased.
+			</p>
+		</div>
+	</div>
+	<br>
+	<br>
+{% endblock %}

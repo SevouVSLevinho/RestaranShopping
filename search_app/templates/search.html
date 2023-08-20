@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block metadescription %}
+	We have a variety of stunning and comfy cushions. Look for the one that suits your needs.
+{% endblock %}
+{% block title %}
+	Search - Perfect Cushion Store
+{% endblock %}
+{% block content %}
+	<section style="background-color: #000; margin-top: 7.4em;">
+		<div>
+			<p class="text-center my_search_text">You have searched for: <b>"{{ query }}"</b></p>
+		</div>
+		<div class="container">
+			<div class="row mx-auto">
+				{% for product in products %}
+				<div class="col-sm-6 col-md-3 col-lg-4 p-b-35 isotope-item women">
+					<!-- Block2 -->
+					<div class="block2">
+						<div class="block2-pic hov-img0">
+							<a href="{{product.get_url}}">
+								<img src="{{ product.image.url }}" alt="{{product.name}}">
+							</a>
+						</div>
+			
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">
+								<h1 class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									{{product.name}}
+								</h1>
+			
+								<span class="stext-105 cl3">
+									${{product.price}}
+								</span>
+							</div>
+			
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+									<img class="icon-heart1 dis-block trans-04" src="{% static 'cozastore/images/icons/icon-heart-01.png' %}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{% static 'cozastore/images/icons/icon-heart-02.png' %}" alt="ICON">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

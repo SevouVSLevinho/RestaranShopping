@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+	Order Details - Perfect Cushion Store
+{% endblock %}
+{% block content %}
+	<div style="margin-top: 7em;">
+		<div class="text-center">
+			<br>
+			<h1 class="text-center my_title">Order Details</h1>
+			<br>
+			<table class="table table-bordered">
+				<tr>
+					<td class="text-left" colspan="2">
+						<b>Order: </b>#{{ order.id }}<br>
+						<b>Date: </b>{{ order.created|date:"d M Y" }}<br>
+						<b>Order Total: </b>${{ order.total }}<br>
+						<b>Order Status: </b><span style="color: green;"><i class="fas fa-check"></i> Complete.</span>
+					</td>
+					<td class="text-left" colspan="2">
+						<b>Billing Address: </b><br>
+						<h5><b><i>Name:</i></b> <span>{{ order.billingName }}</span></h5>
+						<h5><b><i>Address1:</i></b> <span>{{ order.billingAddress1 }}</span></h5>
+						<h5><b><i>City:</i></b> <span>{{ order.billingCity }}</span></h5>
+						<h5><b><i>Postcode:</i></b> <span>{{ order.billingPostcode }}</span></h5>
+						<h5><b><i>Country:</i></b> <span>{{ order.billingCountry }}</span></h5>
+					</td>
+				</tr>
+				<tr>
+					<td><b>Product Description</b></td>
+					<td><b>Qty</b></td>
+					<td><b>Unit Price</b></td>
+					<td><b>Sub-Total</b></td>
+				</tr>
+				{% for item in order_items %}
+				<tr>
+					<td>{{ item.product }}</td>
+					<td>{{ item.quantity }}</td>
+					<td>${{ item.price }}</td>
+					<td>${{ item.sub_total }}</td>
+				</tr>
+				{% endfor %}
+				<tr>
+					<td class="text-right" colspan="3"><b>Total: </b></td>
+					<td>${{ order.total }}</td>
+				</tr>
+				<tr>
+					<td class="text-right" colspan="3"><b>Total Paid: </b></td>
+					<td>${{ order.total }}</td>
+				</tr>
+				<tr>
+					<td class="text-left" colspan="2">
+						<b>Shipping Address: </b><br>
+						<h5><b><i>Name:</i></b> <span>{{ order.shippingName }}</span></h5>
+						<h5><b><i>Address1:</i></b> <span>{{ order.shippingAddress1 }}</span></h5>
+						<h5><b><i>City:</i></b> <span>{{ order.shippingCity }}</span></h5>
+						<h5><b><i>Postcode:</i></b> <span>{{ order.shippingPostcode }}</span></h5>
+						<h5><b><i>Country:</i></b> <span>{{ order.shippingCountry }}</span></h5>
+					</td>
+					<td class="text-left" colspan="2">
+						<b>Payment Details: </b><br>
+						The order <span style="color: green; font-weight: bold;">#{{ order.id }}</span> has been paid successfully via Stripe.
+					</td>
+				</tr>
+			</table>
+			<button class="btn btn-secondary"><a href="{% url 'order:order_history' %}"><i class="bi bi-arrow-left"></i> Go Back</a></button>
+			<button class="btn btn-secondary" onclick="window.print();"><i class="fas fa-print"></i> Print Order</button>
+		</div>
+	</div>
+	<br>
+	<br>
+{% endblock %}

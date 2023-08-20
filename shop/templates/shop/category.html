@@ -1,0 +1,781 @@
+{% extends "base.html" %}
+{% load static %}
+{% block metadescription %}
+	{% if category %}
+		{{ category.description|truncatewords:155 }}
+	{% else %}
+		Welcome to the Restarount store where you can buy comfy and awesome cushions.
+	{% endif %}
+{% endblock %}
+{% block title %}
+	{% if category %}
+		{{ category.name }} - Perfect Restarount Shop
+	{% else %}
+		See Our Cushion Collection - Perfect Restarount Shop
+	{% endif %}
+{% endblock %}
+{% block content %}
+<html>
+<head>
+    <title>DELI KC - Restourant</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- ================================================================ -->
+	<link rel="icon" href="{% static './assets/images/slider/pngwing.com.png '%}">
+    <!-- ================================================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <!-- ================================================================ -->
+    <link rel="stylesheet" href="{% static 'assets/css/open-iconic-bootstrap.min.css '%}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css '%}">
+    <!-- ================================================================ -->
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css '%}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css '%}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css '%}">
+    <!-- ================================================================ -->
+    <link rel="stylesheet" href="{% static 'assets/css/ionicons.min.css '%}">
+    <!-- ================================================================ -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-datepicker.css '%}">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.timepicker.css '%}">
+    <!-- ================================================================ -->    
+    <link rel="stylesheet" href="{% static 'css/flaticon.css '%}">
+    <link rel="stylesheet" href="{% static 'assets/css/icomoon.css '%}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css '%}">
+    <!-- ================================================================ -->
+
+	  <!-- Google Fonts -->
+	  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+	  <!-- Vendor CSS Files -->
+	  <link href="{% static 'assets/assets/vendor/aos/aos.css'%}" rel="stylesheet">
+	  <link href="{% static 'assets/assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+	  <link href="{% static 'assets/assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+	  <link href="{% static 'assets/assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+	  <link href="{% static 'assets/assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+	
+	  <!-- Template Main CSS File -->
+	  <link href="{% static 'assets/assets/css/style.css'%}" rel="stylesheet">
+
+	  <style>
+		html{
+			scroll-behavior: smooth;
+		}
+
+		.hero {
+			background-image: url('../../../static/assets/images/slider/food-bg.jpg'); 
+			background-repeat: no-repeat; 
+			background-size: cover; 
+			margin-bottom: -5em;
+		}
+
+		.hero::before {
+			content: "";
+			background: rgba(0, 0, 0, 0.6);
+			position: absolute;
+			bottom: -6em;
+			top: 0;
+			left: 0;
+			right: 0;
+		}
+
+		::-webkit-scrollbar{
+			width: 0;
+		}
+
+		#scrollPath{
+			position: fixed;
+			top: 0;
+			right: 0;
+			width: 10px;
+			height: 100%;
+			background: rgba(255, 255, 255, 0.05);
+			z-index: 111111;
+		}
+
+		#progressbar{
+			position: fixed;
+			top: 0;
+			right: 0;
+			width: 10px;
+			background: linear-gradient(to top, #cda45e,orange);
+			z-index: 111111;			
+		}
+
+		#progressbar::before{
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(to top, #cda45e,orange);
+			filter: blur(10px);
+		}
+
+		#progressbar::after{
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(to top, #cda45e,orange);
+			filter: blur(30px);
+		}
+
+		.rating {
+			display: flex;
+			justify-content: left;
+			grid-gap: .5rem;
+			font-size: 1rem;
+			color: yellow;			
+		}
+
+		.rating .star {
+			cursor: pointer;
+		}
+
+		.rating .star.active {
+			opacity: 0;
+			animation: animate .5s calc(var(--1) * .1s) ease-in-out forwards;
+		}
+
+		@keyframes animate {
+
+			0% {
+				opacity: 0;
+				transform: scale(1);
+			}
+
+			50% {
+				opacity: 1;
+				transform: scale(1.2);
+			}
+
+			100% {
+				opacity: 1;
+				transform: scale(1);
+			}
+
+		}
+
+		.rating .star:hover {
+			transform: scale(1.1);
+		}
+
+		#shop .add-cart {
+			color: #fff;
+			font-size: 20px;
+			cursor: pointer;
+			transition: all .3s ease-in-out;
+		}
+
+		#shop .add-cart:hover {
+			color: #cda45e;
+		}
+
+		.box{
+			position: absolute;
+			top: 38em;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.box span{
+			display: block;
+			width: 20px;
+			height: 20px;
+			border-bottom: 1px solid #fff;
+			border-right: 1px solid #fff;
+			transform: rotate(45deg);
+			margin: -10px;
+			animation: animate 2s infinite;
+		}
+
+		.box span:nth-child(2){
+			animation-delay: -0.2s;
+		}
+
+		.box span:nth-child(3){
+			animation-delay: -0.4s;
+		}
+
+		@keyframes animate{
+			0%{
+				opacity: 0;
+				transform: rotate(45deg) translate(-20px, -20px);
+			}
+
+			50%{
+				opacity: 1;
+			}
+
+			100%{
+				opacity: 0;
+				transform: rotate(45deg) translate(20px, 20px);
+			}
+		}
+	  </style>
+  </head>
+<body>
+	<div id="progressbar"></div>
+  	<div id="scrollPath"></div>
+	<!--Breadcrumb navigation-->
+	<section id="home-section" class="hero">
+		<div class="home-slider js-fullheight owl-carousel">
+			<div class="slider-item js-fullheight">
+				<div class="overlay"></div>
+			<div class="container-fluid p-0">
+				<div class="row d-md-flex no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
+					<div class="one-third order-md-last img js-fullheight" style="background-image: url(../../../static/assets/images/slider/header-img.png); width: 50% !important;">
+					</div>
+					<div class="one-forth d-flex js-fullheight align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+						<div class="text">
+							<span style="color: #fff;" class="subheading">DELI KC Restaurant Shop</span>
+							<div style="color: #fff;" class="horizontal">
+								<h3 style="color: #fff;" class="vr">Stablished Since 2000</h3>
+								<h1 style="color: #fff;" class="mb-4 mt-3">Catch Your Own <br><span>Stylish &amp; Look</span></h1>
+								<p style="color: #fff;">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
+
+								<p>
+									<a href="#" style="background-color: transparent !important;" class="btn btn-primary px-5 py-3 mt-3">Discover Now</a>
+								</p>
+							</div>
+					</div>
+					</div>
+				</div>
+			</div>
+			</div>
+
+			<div class="slider-item js-fullheight">
+				<div class="overlay"></div>
+				<div class="container-fluid p-0">
+					<div class="row d-flex no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
+						<div class="one-third order-md-last img js-fullheight" style="background-image: url(../../../static/assets/images/slider/feat2.png); width: 50% !important;"></div>
+						<div class="one-forth d-flex js-fullheight align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+							<div class="text">
+								<span style="color: #fff;" class="subheading">DELI KC Restaurant Shop</span>
+								<div style="color: #fff;" class="horizontal">
+									<h3 style="color: #fff;" class="vr" style="background-image: url(images/divider.jpg);">Best eCommerce Online Shop</h3>
+									<h1 style="color: #fff;" class="mb-4 mt-3">A Thouroughly <span>Modern</span> Woman</h1>
+									<p style="color: #fff;">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
+
+									<p>
+										<a href="#" style="background-color: transparent !important;" class="btn btn-primary px-5 py-3 mt-3">Shop Now</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="box">
+			<a href="#about">
+			  <span></span>
+			  <span></span>
+			  <span></span>
+			</a>
+		</div>
+  	</section>
+
+	  <!-- ======= About Section ======= -->
+	  <section id="about" style="top: 3em;" class="about">
+		<div class="container" data-aos="fade-up">
+  
+		  <div class="row">
+			<div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
+			  <div class="about-img">
+				<img src="{% static 'assets/assets/img/about.jpg' %}" alt="">
+			  </div>
+			</div>
+			<div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+			  <h3 style="color: #fff;">Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+			  <p class="fst-italic">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+				magna aliqua.
+			  </p>
+			  <ul>
+				<li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+				<li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+				<li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+			  </ul>
+			  <p>
+				Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+				velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+				culpa qui officia deserunt mollit anim id est laborum
+			  </p>
+			</div>
+		  </div>
+  
+		</div>
+	  </section><!-- End About Section -->
+	<br>
+
+	<!-- Product -->
+	<section id="shop" style="background-color: #000 !important;" class="bg0 p-t-23 p-b-140">
+		<div style="margin-top: 5em;" class="container">
+
+			<div class="row isotope-grid" data-aos="zoom-in" data-aos-delay="100">
+				{% for product in products.object_list %}
+				<div class="col-sm-6 col-md-3 col-lg-4 p-b-35 isotope-item women">
+					<!-- Block2 -->
+					<div class="block2">
+						<div class="block2-pic hov-img0">
+							<img src="{{ product.image.url }}" alt="{{product.name}}">
+
+							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15">
+								Quick View
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">
+								<h1 class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									{{product.name}}
+								</h1>
+
+								<span class="stext-105 cl3">
+									{{product.price}}{{ product.unit }}
+								</span>
+							</div>
+
+							<a title="Add to Cart" href="{{product.get_url}}"><i class="bi bi-bag-plus-fill add-cart"></i></a>
+							
+						</div>
+						<div class="rating">
+							<input type="number" name="rating" hidden>
+							<i class="bi bi-star star" style="--1: 0"></i>
+							<i class="bi bi-star star" style="--1: 1"></i>
+							<i class="bi bi-star star" style="--1: 2"></i>
+							<i class="bi bi-star star" style="--1: 3"></i>
+							<i class="bi bi-star star" style="--1: 4"></i>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="mx-auto">
+				{% if products.paginator.num_pages > 1 %}
+					<hr>
+					<div class="text-center">
+						{% for pg in products.paginator.page_range %}
+							<a href="?page={{pg}}" class="btn btn-light btn-sm {% if products.number == pg %}active{% endif %}">{{pg}}</a>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+
+	<!-- ======= Specials Section ======= -->
+    <section style="background-color: #000 !important;" id="specials" class="specials">
+		<div class="container" data-aos="fade-up">
+  
+		  <div class="section-title">
+			<h2>Specials</h2>
+			<p>Check Our Specials</p>
+		  </div>
+  
+		  <div class="row" data-aos="fade-up" data-aos-delay="100">
+			<div class="col-lg-3">
+			  <ul class="nav nav-tabs flex-column">
+				<li class="nav-item">
+				  <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Modi sit est</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Unde praesentium sed</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Pariatur explicabo vel</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Nostrum qui quasi</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Iusto ut expedita aut</a>
+				</li>
+			  </ul>
+			</div>
+			<div class="col-lg-9 mt-4 mt-lg-0">
+			  <div class="tab-content">
+				<div class="tab-pane active show" id="tab-1">
+				  <div class="row">
+					<div class="col-lg-8 details order-2 order-lg-1">
+					  <h3>Architecto ut aperiam autem id</h3>
+					  <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
+					  <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+					</div>
+					<div class="col-lg-4 text-center order-1 order-lg-2">
+					  <img src="{% static 'assets/assets/img/specials-1.png' %}" alt="" class="img-fluid">
+					</div>
+				  </div>
+				</div>
+				<div class="tab-pane" id="tab-2">
+				  <div class="row">
+					<div class="col-lg-8 details order-2 order-lg-1">
+					  <h3>Et blanditiis nemo veritatis excepturi</h3>
+					  <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
+					  <p>Ea ipsum voluptatem consequatur quis est. Illum error ullam omnis quia et reiciendis sunt sunt est. Non aliquid repellendus itaque accusamus eius et velit ipsa voluptates. Optio nesciunt eaque beatae accusamus lerode pakto madirna desera vafle de nideran pal</p>
+					</div>
+					<div class="col-lg-4 text-center order-1 order-lg-2">
+					  <img src="{% static 'assets/assets/img/specials-2.png' %}" alt="" class="img-fluid">
+					</div>
+				  </div>
+				</div>
+				<div class="tab-pane" id="tab-3">
+				  <div class="row">
+					<div class="col-lg-8 details order-2 order-lg-1">
+					  <h3>Impedit facilis occaecati odio neque aperiam sit</h3>
+					  <p class="fst-italic">Eos voluptatibus quo. Odio similique illum id quidem non enim fuga. Qui natus non sunt dicta dolor et. In asperiores velit quaerat perferendis aut</p>
+					  <p>Iure officiis odit rerum. Harum sequi eum illum corrupti culpa veritatis quisquam. Neque necessitatibus illo rerum eum ut. Commodi ipsam minima molestiae sed laboriosam a iste odio. Earum odit nesciunt fugiat sit ullam. Soluta et harum voluptatem optio quae</p>
+					</div>
+					<div class="col-lg-4 text-center order-1 order-lg-2">
+					  <img src="{% static 'assets/assets/img/specials-3.png' %}" alt="" class="img-fluid">
+					</div>
+				  </div>
+				</div>
+				<div class="tab-pane" id="tab-4">
+				  <div class="row">
+					<div class="col-lg-8 details order-2 order-lg-1">
+					  <h3>Fuga dolores inventore laboriosam ut est accusamus laboriosam dolore</h3>
+					  <p class="fst-italic">Totam aperiam accusamus. Repellat consequuntur iure voluptas iure porro quis delectus</p>
+					  <p>Eaque consequuntur consequuntur libero expedita in voluptas. Nostrum ipsam necessitatibus aliquam fugiat debitis quis velit. Eum ex maxime error in consequatur corporis atque. Eligendi asperiores sed qui veritatis aperiam quia a laborum inventore</p>
+					</div>
+					<div class="col-lg-4 text-center order-1 order-lg-2">
+					  <img src="{% static 'assets/assets/img/specials-4.png' %}" alt="" class="img-fluid">
+					</div>
+				  </div>
+				</div>
+				<div class="tab-pane" id="tab-5">
+				  <div class="row">
+					<div class="col-lg-8 details order-2 order-lg-1">
+					  <h3>Est eveniet ipsam sindera pad rone matrelat sando reda</h3>
+					  <p class="fst-italic">Omnis blanditiis saepe eos autem qui sunt debitis porro quia.</p>
+					  <p>Exercitationem nostrum omnis. Ut reiciendis repudiandae minus. Omnis recusandae ut non quam ut quod eius qui. Ipsum quia odit vero atque qui quibusdam amet. Occaecati sed est sint aut vitae molestiae voluptate vel</p>
+					</div>
+					<div class="col-lg-4 text-center order-1 order-lg-2">
+					  <img src="{% static 'assets/assets/img/specials-5.png' %}" alt="" class="img-fluid">
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+  
+		</div>
+	  </section><!-- End Specials Section -->
+
+	  <!-- ======= Events Section ======= -->
+	  <section id="events" class="events">
+		<div class="container" data-aos="fade-up">
+  
+		  <div class="section-title">
+			<h2>Events</h2>
+			<p>Organize Your Events in our Restaurant</p>
+		  </div>
+  
+		  <div class="events-slider swiper" data-aos="fade-up" data-aos-delay="100">
+			<div class="swiper-wrapper">
+  
+			  <div class="swiper-slide">
+				<div class="row event-item">
+				  <div style="margin-top: -5em;" class="col-lg-6">
+					<img src="{% static 'assets/images/slider/feat.png' %}" class="img-fluid" alt="">
+				  </div>
+				  <div class="col-lg-6 pt-4 pt-lg-0 content">
+					<h3>Birthday Parties</h3>
+					<div class="price">
+					  <p><span>$189</span></p>
+					</div>
+					<p class="fst-italic">
+					  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+					  magna aliqua.
+					</p>
+					<ul>
+					  <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+					  <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+					  <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+					</ul>
+					<p>
+					  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+					  velit esse cillum dolore eu fugiat nulla pariatur
+					</p>
+				  </div>
+				</div>
+			  </div><!-- End testimonial item -->
+  
+			  <div class="swiper-slide">
+				<div class="row event-item">
+				  <div class="col-lg-6">
+					<img src="{% static 'assets/assets/img/event-private.jpg' %}" class="img-fluid" alt="">
+				  </div>
+				  <div class="col-lg-6 pt-4 pt-lg-0 content">
+					<h3>Private Parties</h3>
+					<div class="price">
+					  <p><span>$290</span></p>
+					</div>
+					<p class="fst-italic">
+					  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+					  magna aliqua.
+					</p>
+					<ul>
+					  <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+					  <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+					  <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+					</ul>
+					<p>
+					  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+					  velit esse cillum dolore eu fugiat nulla pariatur
+					</p>
+				  </div>
+				</div>
+			  </div><!-- End testimonial item -->
+  
+			  <div class="swiper-slide">
+				<div class="row event-item">
+				  <div class="col-lg-6">
+					<img src="{% static 'assets/assets/img/event-custom.jpg' %}" class="img-fluid" alt="">
+				  </div>
+				  <div class="col-lg-6 pt-4 pt-lg-0 content">
+					<h3>Custom Parties</h3>
+					<div class="price">
+					  <p><span>$99</span></p>
+					</div>
+					<p class="fst-italic">
+					  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+					  magna aliqua.
+					</p>
+					<ul>
+					  <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+					  <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+					  <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+					</ul>
+					<p>
+					  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+					  velit esse cillum dolore eu fugiat nulla pariatur
+					</p>
+				  </div>
+				</div>
+			  </div><!-- End testimonial item -->
+  
+			</div>
+			<div class="swiper-pagination"></div>
+		  </div>
+  
+		</div>
+	  </section><!-- End Events Section -->
+
+	  <!-- ======= Gallery Section ======= -->
+	  <section style="background-color: #000 !important;" id="gallery" class="gallery">
+
+		<div class="container" data-aos="fade-up">
+		  <div class="section-title">
+			<h2>Gallery</h2>
+			<p>Some photos from Our Restaurant</p>
+		  </div>
+		</div>
+  
+		<div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
+  
+		  <div class="row g-0">
+  
+			<div class="col-lg-3 col-md-4">
+			  <div class="gallery-item">
+				<a href="{% static 'assets/assets/img/gallery/gallery-1.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
+				  <img src="{% static 'assets/assets/img/gallery/gallery-1.jpg' %}" alt="" class="img-fluid">
+				</a>
+			  </div>
+			</div>
+  
+			<div class="col-lg-3 col-md-4">
+			  <div class="gallery-item">
+				<a href="{% static 'assets/assets/img/gallery/gallery-2.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
+				  <img src="{% static 'assets/assets/img/gallery/gallery-2.jpg' %}" alt="" class="img-fluid">
+				</a>
+			  </div>
+			</div>
+  
+			<div class="col-lg-3 col-md-4">
+			  <div class="gallery-item">
+				<a href="{% static 'assets/assets/img/gallery/gallery-3.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
+				  <img src="{% static 'assets/assets/img/gallery/gallery-3.jpg' %}" alt="" class="img-fluid">
+				</a>
+			  </div>
+			</div>
+  
+			<div class="col-lg-3 col-md-4">
+			  <div class="gallery-item">
+				<a href="{% static 'assets/assets/img/gallery/gallery-4.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
+				  <img src="{% static 'assets/assets/img/gallery/gallery-4.jpg' %}" alt="" class="img-fluid">
+				</a>
+			  </div>
+			</div>
+  
+			<div class="col-lg-3 col-md-4">
+			  <div class="gallery-item">
+				<a href="{% static 'assets/assets/img/gallery/gallery-5.jpg ' %}" class="gallery-lightbox" data-gall="gallery-item">
+				  <img src="{% static 'assets/assets/img/gallery/gallery-5.jpg ' %}" alt="" class="img-fluid">
+				</a>
+			  </div>
+			</div>
+  
+			<div class="col-lg-3 col-md-4">
+			  <div class="gallery-item">
+				<a href="{% static 'assets/assets/img/gallery/gallery-6.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
+				  <img src="{% static 'assets/assets/img/gallery/gallery-6.jpg' %}" alt="" class="img-fluid">
+				</a>
+			  </div>
+			</div>
+  
+			<div class="col-lg-3 col-md-4">
+			  <div class="gallery-item">
+				<a href="{% static 'assets/assets/img/gallery/gallery-7.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
+				  <img src="{% static 'assets/assets/img/gallery/gallery-7.jpg' %}" alt="" class="img-fluid">
+				</a>
+			  </div>
+			</div>
+  
+			<div class="col-lg-3 col-md-4">
+			  <div class="gallery-item">
+				<a href="{% static 'assets/assets/img/gallery/gallery-8.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
+				  <img src="{% static 'assets/assets/img/gallery/gallery-8.jpg' %}" alt="" class="img-fluid">
+				</a>
+			  </div>
+			</div>
+  
+		  </div>
+  
+		</div>
+	  </section><!-- End Gallery Section -->
+  
+	  <!-- ======= Chefs Section ======= -->
+	  <section id="chefs" class="chefs" style="background-color: #000;">
+		<div class="container" data-aos="fade-up">
+  
+		  <div class="section-title">
+			<h2>Chefs</h2>
+			<p>Our Proffesional Chefs</p>
+		  </div>
+  
+		  <div class="row">
+  
+			<div class="col-lg-4 col-md-6">
+			  <div class="member" data-aos="zoom-in" data-aos-delay="100">
+				<img src="{% static 'assets/assets/img/chefs/chefs-1.jpg' %}" class="img-fluid" alt="">
+				<div class="member-info">
+				  <div class="member-info-content">
+					<h4>Walter White</h4>
+					<span>Master Chef</span>
+				  </div>
+				  <div class="social">
+					<a href=""><i class="bi bi-twitter"></i></a>
+					<a href=""><i class="bi bi-facebook"></i></a>
+					<a href=""><i class="bi bi-instagram"></i></a>
+					<a href=""><i class="bi bi-linkedin"></i></a>
+				  </div>
+				</div>
+			  </div>
+			</div>
+  
+			<div class="col-lg-4 col-md-6">
+			  <div class="member" data-aos="zoom-in" data-aos-delay="200">
+				<img src="{% static 'assets/assets/img/chefs/chefs-2.jpg' %}" class="img-fluid" alt="">
+				<div class="member-info">
+				  <div class="member-info-content">
+					<h4>Sarah Jhonson</h4>
+					<span>Patissier</span>
+				  </div>
+				  <div class="social">
+					<a href=""><i class="bi bi-twitter"></i></a>
+					<a href=""><i class="bi bi-facebook"></i></a>
+					<a href=""><i class="bi bi-instagram"></i></a>
+					<a href=""><i class="bi bi-linkedin"></i></a>
+				  </div>
+				</div>
+			  </div>
+			</div>
+  
+			<div class="col-lg-4 col-md-6">
+			  <div class="member" data-aos="zoom-in" data-aos-delay="300">
+				<img src="{% static 'assets/assets/img/chefs/chefs-3.jpg' %}" class="img-fluid" alt="">
+				<div class="member-info">
+				  <div class="member-info-content">
+					<h4>William Anderson</h4>
+					<span>Cook</span>
+				  </div>
+				  <div class="social">
+					<a href=""><i class="bi bi-twitter"></i></a>
+					<a href=""><i class="bi bi-facebook"></i></a>
+					<a href=""><i class="bi bi-instagram"></i></a>
+					<a href=""><i class="bi bi-linkedin"></i></a>
+				  </div>
+				</div>
+			  </div>
+			</div>
+  
+		  </div>
+  
+		</div>
+	  </section><!-- End Chefs Section -->
+	  
+	<script src="{% static 'assets/js/jquery.min.js '%}"></script>
+  <script src="{% static 'assets/js/jquery-migrate-3.0.1.min.js '%}"></script>
+  <script src="{% static 'assets/js/popper.min.js '%}"></script>
+  <script src="{% static 'assets/js/bootstrap.min.js '%}"></script>
+  <script src="{% static 'assets/js/jquery.easing.1.3.js '%}"></script>
+  <script src="{% static 'assets/js/jquery.waypoints.min.js '%}"></script>
+  <script src="{% static 'assets/js/jquery.stellar.min.js '%}"></script>
+  <script src="{% static 'assets/js/owl.carousel.min.js '%}"></script>
+  <script src="{% static 'assets/js/jquery.magnific-popup.min.js '%}"></script>
+  <script src="{% static 'assets/js/aos.js '%}"></script>
+  <script src="{% static 'assets/js/jquery.animateNumber.min.js '%}"></script>
+  <script src="{% static 'assets/js/bootstrap-datepicker.js '%}"></script>
+  <script src="{% static 'assets/js/scrollax.min.js '%}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'assets/js/google-map.js '%}"></script>
+  <script src="{% static 'assets/js/main.js '%}"></script>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'assets/assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+  <script src="{% static 'assets/assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+  <script src="{% static 'assets/assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{% static 'assets/assets/vendor/php-email-form/validate.js'%}"></script>
+
+  <script type="text/javascript">
+    let progress = document.getElementById('progressbar');
+    let totalHeight = document.body.scrollHeight - 
+        window.innerHeight;
+    window.onscroll = function(){
+      let progressHeight = (window.pageYOffset / totalHeight) * 100;
+      progress.style.height = progressHeight + "%";
+    }
+  </script>
+
+  <script>
+	const allStar = document.querySelectorAll(".rating .star")
+
+	allStar.forEach((item, idx) => {
+		item.addEventListener('click', function () {
+			let click = 0
+
+			allStar.forEach(i => {
+				i.classList.replace('bi-star-fill', 'bi-star')
+				i.classList.remove('active')
+			})
+			for(let i=0; i < allStar.length; i++) {
+				if (i <= idx) {
+					allStar[i].classList.replace('bi-star', 'bi-star-fill')
+					allStar[i].classList.add('active')
+				} else {
+					allStar[i+1].style.setProperty('--1', click)
+					click++
+				}
+
+			}
+		})
+	})
+  </script>
+</body>
+</html>
+{% endblock %}
