@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'users',
     'shop',
     'search_app',
+    'bootstrap4',
     'cart',
     'stripe',
     'order',
