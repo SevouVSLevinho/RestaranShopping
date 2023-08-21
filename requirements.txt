@@ -2,7 +2,7 @@
 asgiref
 billiard
 bleach
-bootstrap4==0.1.0
+bootstrap5
 celery
 certifi
 charset-normalizer
